@@ -16,7 +16,7 @@ public class Repulo implements Runnable {
   public void run() {
     leszallas();
     leszalltam();
-    varakozasDokkoloban(new Random().nextInt(2000));
+    varakozasDokkoloban(new Random().nextInt(1000));
     felszallas();
     felszalltam();
   }
@@ -24,7 +24,7 @@ public class Repulo implements Runnable {
   private void leszallas() {
     log("Leszallnek.");
     try {
-      torony.leszallnek(nev);
+      torony.leszallnek(this);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
@@ -32,13 +32,13 @@ public class Repulo implements Runnable {
 
   private void leszalltam() {
     log("Leszalltam.");
-    torony.leszalltam(nev);
+    torony.leszalltam(this);
   }
 
   private void felszallas() {
     log("Felszallnek.");
     try {
-      torony.felszallnek(nev);
+      torony.felszallnek(this);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
@@ -46,7 +46,7 @@ public class Repulo implements Runnable {
 
   private void felszalltam() {
     log("Felszalltam.");
-    torony.felszalltam(nev);
+    torony.felszalltam(this);
   }
 
   private void varakozasDokkoloban(int mennyit) {
@@ -60,5 +60,9 @@ public class Repulo implements Runnable {
 
   private void log(String s) {
     System.out.println(String.format("REPULO %s: %s", nev, s));
+  }
+
+  public String getNev() {
+    return nev;
   }
 }

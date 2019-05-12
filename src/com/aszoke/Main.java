@@ -5,15 +5,17 @@ import java.util.List;
 
 public class Main {
 
-  // private static final Integer REPULOK_SZAMA = 1;
-  // private static final Integer REPULOK_SZAMA = 2;
-  private static final Integer REPULOK_SZAMA = 10;
-  // private static final Integer REPULOK_SZAMA = 44;
-
-  private static Torony torony = new Torony();
+  private static final Integer REPULOK_SZAMA = 5;
+  private static final Integer DOKKOLOK_SZAMA = 2;
 
   public static void main(String[] args) {
 
+    List<Dokkolo> dokkolok = new ArrayList<>();
+    for (int i = 0; i < DOKKOLOK_SZAMA; i++) {
+      dokkolok.add(new Dokkolo(i));
+    }
+    Kifutopalya kifutopalya = new Kifutopalya();
+    Torony torony = new Torony(kifutopalya, dokkolok);
     List<Thread> repulok = new ArrayList<>(REPULOK_SZAMA);
 
     for (int i = 0; i < REPULOK_SZAMA; i++) {
